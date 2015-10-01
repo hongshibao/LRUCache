@@ -9,7 +9,7 @@ link_directories(${Boost_LIBRARIES})
 
 set(SRC_DIR ./src)
 set(SRC_LIST
-    ${SRC_DIR}/Cache.h
+    ${SRC_DIR}/CacheInterface.h
     ${SRC_DIR}/LRUCache.h
     ${SRC_DIR}/LRUCacheShield.h
     ${SRC_DIR}/main.cpp)

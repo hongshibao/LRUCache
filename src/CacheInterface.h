@@ -20,6 +20,7 @@ public:
     {
         return _capacity;
     }
+    virtual size_t Size() = 0;
 
     virtual bool Initialize() = 0;
     virtual void Clear() = 0;

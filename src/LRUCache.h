@@ -2,7 +2,7 @@
 
 #pragma once
 
-#include "Cache.h"
+#include "CacheInterface.h"
 #include <boost/bimap.hpp>
 #include <boost/bimap/unordered_set_of.hpp>
 #include <boost/bimap/list_of.hpp>
@@ -29,11 +29,6 @@ public:
     {
         std::lock_guard<std::mutex> lock(_mutex_cache);
         _bimap_lru_cache->clear();
-    }
-
-    size_t GetCapacity()
-    {
-        return this->_capacity;
     }
 
     size_t Size()
