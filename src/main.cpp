@@ -21,12 +21,21 @@ public:
     }
 };
 
+bool query(int k, string *v)
+{
+    for(int i=0;i<500000000;++i)
+        ;
+    *v=to_string(k);
+    return true;
+}
+
 void thread_run(thinkpoet::LRUCacheShield<int, string>& c, int k)
 {
     string val;
     Test test;
-    c.ShieldGet(k, &val, test, &Test::query, k);
-    cout << this_thread::get_id() << " " << k << " " << val << endl;
+    //c.ShieldGet(k, &val, test, &Test::query, k);
+    c.ShieldGet(k, &val, &query, k);
+    cout << this_thread::get_id() << " key=" << k << " value=" << val << endl;
 }
 
 int main()
