@@ -13,8 +13,7 @@ template<typename KeyType, typename ValueType>
 class LRUCacheShield
 {
 public:
-    LRUCacheShield(size_t capacity):
-        _capacity(capacity),
+    LRUCacheShield():
         _lru_cache(nullptr)
     {
     }
@@ -25,7 +24,7 @@ public:
         _key_to_mutex_ptr.clear();
     }
 
-    int GetCapacity()
+    int Capacity()
     {
         return _capacity;
     }
@@ -35,14 +34,15 @@ public:
         return _lru_cache->Size();
     }
 
-    bool Initialize()
+    bool Initialize(size_t capacity)
     {
+        _capacity = capacity;
         {
             std::lock_guard<std::mutex> lock(_mutex_map);
             _key_to_mutex_ptr.clear();
         }
-        _lru_cache.reset(new LRUCache<KeyType, ValueType>(_capacity));
-        return _lru_cache->Initialize();
+        _lru_cache.reset(new LRUCache<KeyType, ValueType>());
+        return _lru_cache->Initialize(capacity);
     }
 
     void Clear()

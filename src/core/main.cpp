@@ -41,8 +41,8 @@ void thread_run(thinkpoet::LRUCacheShield<int, string>& c, int k)
 int main()
 {
     cout << "SB" << endl;
-    thinkpoet::LRUCacheShield<int, string> cache(100);
-    cache.Initialize();
+    thinkpoet::LRUCacheShield<int, string> cache;
+    cache.Initialize(100);
     vector<unique_ptr<thread>> vec;
     int num_thread=8;
     chrono::time_point<chrono::high_resolution_clock> st, ed;

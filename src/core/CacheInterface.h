@@ -10,19 +10,19 @@ template<typename KeyType, typename ValueType>
 class CacheInterface
 {
 public:
-    CacheInterface(size_t capacity): _capacity(capacity)
+    CacheInterface()
     {
     }
 
     virtual ~CacheInterface() {}
 
-    virtual size_t GetCapacity()
+    virtual size_t Capacity()
     {
         return _capacity;
     }
     virtual size_t Size() = 0;
 
-    virtual bool Initialize() = 0;
+    virtual bool Initialize(size_t capacity) = 0;
     virtual void Clear() = 0;
 
     virtual bool Get(const KeyType &key, ValueType *val) = 0;

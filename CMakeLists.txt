@@ -3,16 +3,31 @@ cmake_minimum_required(VERSION 2.8)
 
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -pthread")
 
-find_package(Boost 1.54.0)
+find_package(Boost REQUIRED)
 include_directories(${Boost_INCLUDE_DIRS})
 link_directories(${Boost_LIBRARIES})
 
-set(SRC_DIR ./src)
-set(SRC_LIST
-    ${SRC_DIR}/CacheInterface.h
-    ${SRC_DIR}/LRUCache.h
-    ${SRC_DIR}/LRUCacheShield.h
-    ${SRC_DIR}/main.cpp)
-add_executable(${PROJECT_NAME} ${SRC_LIST})
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
+link_directories(${GTEST_BOTH_LIBRARIES})
 
+
+set(SRC_DIR ${CMAKE_SOURCE_DIR}/src)
+include_directories(${SRC_DIR})
+
+set(CORE_SRC_DIR ${SRC_DIR}/core)
+set(CORE_SRC_LIST
+    ${CORE_SRC_DIR}/CacheInterface.h
+    ${CORE_SRC_DIR}/LRUCache.h
+    ${CORE_SRC_DIR}/LRUCacheShield.h
+    ${CORE_SRC_DIR}/main.cpp)
+add_executable(${PROJECT_NAME} ${CORE_SRC_LIST})
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
+
+set(TEST_SRC_DIR ${SRC_DIR}/test)
+set(TEST_SRC_LIST
+    ${TEST_SRC_DIR}/CacheInterfaceTest.cpp
+    ${TEST_SRC_DIR}/TestMain.cpp)
+add_executable(TestMain ${TEST_SRC_LIST})
+target_link_libraries(TestMain ${GTEST_BOTH_LIBRARIES})
+

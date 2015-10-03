@@ -19,8 +19,8 @@ public:
     boost::bimaps::list_of<ValueType>
     > BimapLRUCache;
 
-    LRUCache(size_t capacity):
-        CacheInterface<KeyType, ValueType>(capacity),
+    LRUCache():
+        CacheInterface<KeyType, ValueType>(),
         _bimap_lru_cache(nullptr)
     {
     }
@@ -37,8 +37,9 @@ public:
         return _bimap_lru_cache->size();
     }
 
-    bool Initialize() override
+    bool Initialize(size_t capacity) override
     {
+        this->_capacity = capacity;
         std::lock_guard<std::mutex> lock(_mutex_cache);
         _bimap_lru_cache.reset(new BimapLRUCache());
         return true;
