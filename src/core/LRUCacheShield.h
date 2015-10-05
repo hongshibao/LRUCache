@@ -55,7 +55,7 @@ public:
         _lru_cache->Clear();
     }
 
-    // (obj.*get_val)(args..., *val)
+    // (obj.*get_val)(args..., key, *val)
     template<typename Obj, typename MemberFuncPtr, typename... Args>
     bool ShieldGet(const KeyType &key, ValueType *val,
                    Obj &obj, MemberFuncPtr get_val, Args&&... args)
@@ -86,9 +86,10 @@ public:
             {
                 return true;
             }
+            // The last 2nd parameter of this member function must be the key
             // The last parameter of this member function must be the value result to be returned
             // The return value must be bool type
-            success = (obj.*get_val)(std::forward<Args>(args)..., val);
+            success = (obj.*get_val)(std::forward<Args>(args)..., key, val);
             if(success)
             {
                 _lru_cache->Put(key, *val);
@@ -101,7 +102,7 @@ public:
         return success;
     }
 
-    // (*get_val)(args..., *val)
+    // (*get_val)(args..., key, *val)
     template<typename FuncPtr, typename... Args>
     bool ShieldGet(const KeyType &key, ValueType *val,
                    FuncPtr get_val, Args&&... args)
@@ -132,9 +133,10 @@ public:
             {
                 return true;
             }
+            // The last 2nd parameter of this member function must be the key
             // The last parameter of this function must be the value result to be returned
             // The return value must be bool type
-            success = (*get_val)(std::forward<Args>(args)..., val);
+            success = (*get_val)(std::forward<Args>(args)..., key, val);
             if(success)
             {
                 _lru_cache->Put(key, *val);

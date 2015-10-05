@@ -98,4 +98,4 @@ typedef ::testing::Types<LRUCache<string, string>> CacheImplementions;
 //            to filter and just run LRUCache<string, string>
 INSTANTIATE_TYPED_TEST_CASE_P(TestCache, CacheInterfaceTest, CacheImplementions);
 
-}
+}  // namespace thinkpoet

@@ -19,14 +19,15 @@ set(CORE_SRC_DIR ${SRC_DIR}/core)
 set(CORE_SRC_LIST
     ${CORE_SRC_DIR}/CacheInterface.h
     ${CORE_SRC_DIR}/LRUCache.h
-    ${CORE_SRC_DIR}/LRUCacheShield.h
-    ${CORE_SRC_DIR}/main.cpp)
-add_executable(${PROJECT_NAME} ${CORE_SRC_LIST})
+    ${CORE_SRC_DIR}/LRUCacheShield.h)
+add_library(${PROJECT_NAME} SHARED ${CORE_SRC_LIST})
+set_target_properties(${PROJECT_NAME} PROPERTIES LINKER_LANGUAGE CXX)
 target_link_libraries(${PROJECT_NAME} ${Boost_LIBRARIES})
 
 set(TEST_SRC_DIR ${SRC_DIR}/test)
 set(TEST_SRC_LIST
     ${TEST_SRC_DIR}/CacheInterfaceTest.cpp
+    ${TEST_SRC_DIR}/LRUCacheShieldTest.cpp
     ${TEST_SRC_DIR}/TestMain.cpp)
 add_executable(TestMain ${TEST_SRC_LIST})
 target_link_libraries(TestMain ${GTEST_BOTH_LIBRARIES})
