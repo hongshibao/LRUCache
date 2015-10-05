@@ -4,7 +4,8 @@
 
 #include <cstddef>
 
-namespace thinkpoet {
+namespace thinkpoet
+{
 
 template<typename KeyType, typename ValueType>
 class CacheInterface

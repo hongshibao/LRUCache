@@ -8,7 +8,8 @@
 #include <boost/bimap/list_of.hpp>
 #include <mutex>
 
-namespace thinkpoet {
+namespace thinkpoet
+{
 
 template<typename KeyType, typename ValueType>
 class LRUCache: public CacheInterface<KeyType, ValueType>

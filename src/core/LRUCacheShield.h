@@ -7,7 +7,8 @@
 #include <memory>
 #include <unordered_map>
 
-namespace thinkpoet {
+namespace thinkpoet
+{
 
 template<typename KeyType, typename ValueType>
 class LRUCacheShield

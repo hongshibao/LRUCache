@@ -7,20 +7,25 @@
 
 using namespace std;
 
-namespace thinkpoet {
+namespace thinkpoet
+{
 
 template<typename T>
-class CacheInterfaceTest: public ::testing::Test {
+class CacheInterfaceTest: public ::testing::Test
+{
 public:
-    CacheInterfaceTest(): _cache(nullptr) {
+    CacheInterfaceTest(): _cache(nullptr)
+    {
     }
 
 protected:
-    void SetUp() override {
+    void SetUp() override
+    {
         _cache.reset(new T);
     }
 
-    void TearDown() override {
+    void TearDown() override
+    {
     }
 
     unique_ptr<CacheInterface<string, string>> _cache;
@@ -28,7 +33,8 @@ protected:
 
 TYPED_TEST_CASE_P(CacheInterfaceTest);
 
-TYPED_TEST_P(CacheInterfaceTest, PutGet) {
+TYPED_TEST_P(CacheInterfaceTest, PutGet)
+{
     this->_cache->Initialize(3);
     this->_cache->Put("price:[0.0,10.0]", "1,2,3");
     this->_cache->Put("brand:test", "2,3,4");
@@ -37,7 +43,8 @@ TYPED_TEST_P(CacheInterfaceTest, PutGet) {
     EXPECT_EQ(val, "2,3,4");
 }
 
-TYPED_TEST_P(CacheInterfaceTest, Capacity) {
+TYPED_TEST_P(CacheInterfaceTest, Capacity)
+{
     this->_cache->Initialize(3);
     EXPECT_EQ(this->_cache->Capacity(), 3);
     this->_cache->Put("price:[0.0,10.0]", "1,2,3");
@@ -45,7 +52,8 @@ TYPED_TEST_P(CacheInterfaceTest, Capacity) {
     EXPECT_EQ(this->_cache->Capacity(), 3);
 }
 
-TYPED_TEST_P(CacheInterfaceTest, Size) {
+TYPED_TEST_P(CacheInterfaceTest, Size)
+{
     this->_cache->Initialize(3);
     EXPECT_EQ(this->_cache->Size(), 0);
     this->_cache->Put("price:[0.0,10.0]", "1,2,3");
@@ -58,7 +66,8 @@ TYPED_TEST_P(CacheInterfaceTest, Size) {
     EXPECT_EQ(this->_cache->Size(), 3);
 }
 
-TYPED_TEST_P(CacheInterfaceTest, LRU) {
+TYPED_TEST_P(CacheInterfaceTest, LRU)
+{
     this->_cache->Initialize(3);
     this->_cache->Put("1", "a");
     this->_cache->Put("2", "b");
