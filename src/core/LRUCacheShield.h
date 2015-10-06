@@ -133,7 +133,7 @@ public:
             {
                 return true;
             }
-            // The last 2nd parameter of this member function must be the key
+            // The last 2nd parameter of this function must be the key
             // The last parameter of this function must be the value result to be returned
             // The return value must be bool type
             success = (*get_val)(std::forward<Args>(args)..., key, val);

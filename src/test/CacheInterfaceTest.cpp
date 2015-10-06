@@ -94,8 +94,8 @@ REGISTER_TYPED_TEST_CASE_P(CacheInterfaceTest,
 
 typedef ::testing::Types<LRUCache<string, string>> CacheImplementions;
 
-// Use --gtest_filter=TestCache/FQEngineTest/0.*
-//            to filter and just run LRUCache<string, string>
+// Use --gtest_filter=TestCache/CacheInterfaceTest/0.*
+//         to filter and just run test for LRUCache<string, string> implementation
 INSTANTIATE_TYPED_TEST_CASE_P(TestCache, CacheInterfaceTest, CacheImplementions);
 
 }  // namespace thinkpoet

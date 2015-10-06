@@ -15,7 +15,9 @@ public:
     {
     }
 
-    virtual ~CacheInterface() {}
+    virtual ~CacheInterface()
+    {
+    }
 
     virtual size_t Capacity()
     {
