@@ -4,5 +4,5 @@
 - This implementation uses locking to prevent cache stampede (i.e. dogpile).
 
 # Dependencies
-- Boost library
-- gtest library (optional)
+- boost library
+- googletest library (optional)
