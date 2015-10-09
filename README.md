@@ -5,4 +5,4 @@
 
 # Dependencies
 - boost library
-- googletest library (optional)
+- googletest library
