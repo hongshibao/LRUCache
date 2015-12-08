@@ -2,10 +2,11 @@
 
 #pragma once
 
-#include "LRUCache.h"
 #include <mutex>
 #include <memory>
 #include <unordered_map>
+
+#include "LRUCache.h"
 
 namespace thinkpoet
 {

@@ -1,11 +1,13 @@
 // Author: HONG Shibao <shibaohong@outlook.com>
 
-#include "core/LRUCacheShield.h"
-#include <gtest/gtest.h>
 #include <memory>
 #include <thread>
 #include <string>
 #include <vector>
+
+#include <gtest/gtest.h>
+
+#include "core/LRUCacheShield.h"
 
 using namespace std;
 

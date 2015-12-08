@@ -1,9 +1,11 @@
 // Author: HONG Shibao <shibaohong@outlook.com>
 
+#include <memory>
+
+#include <gtest/gtest.h>
+
 #include "core/CacheInterface.h"
 #include "core/LRUCache.h"
-#include <gtest/gtest.h>
-#include <memory>
 
 using namespace std;
 
