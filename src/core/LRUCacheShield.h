@@ -56,7 +56,7 @@ public:
         _lru_cache->Clear();
     }
 
-    // (obj.*get_val)(args..., key, *val)
+    // bool (obj.*get_val)(args..., key, *val)
     template<typename Obj, typename MemberFuncPtr, typename... Args>
     bool ShieldGet(const KeyType &key, ValueType *val,
                    Obj &obj, MemberFuncPtr get_val, Args&&... args)
@@ -103,7 +103,7 @@ public:
         return success;
     }
 
-    // (*get_val)(args..., key, *val)
+    // bool (*get_val)(args..., key, *val)
     template<typename FuncPtr, typename... Args>
     bool ShieldGet(const KeyType &key, ValueType *val,
                    FuncPtr get_val, Args&&... args)
