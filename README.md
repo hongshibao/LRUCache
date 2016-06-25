@@ -5,7 +5,7 @@
 
 ### Dependencies
 - boost library
-- googletest library
+- googletest library (optional)
 
 ### Example
 - Refer to test cases in src/test
