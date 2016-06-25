@@ -1,6 +1,6 @@
 ### LRUCache
 - A C++11 implementation of LRU cache based on bimap of boost library.
-- This implementation uses locking to prevent cache stampede (i.e. dogpile).
+- This implementation uses locking to prevent cache stampede or dogpiling (https://en.wikipedia.org/wiki/Cache_stampede).
 - It is thread-safe.
 
 ### Dependencies
